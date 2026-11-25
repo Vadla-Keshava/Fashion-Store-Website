@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Study Schedule Manager</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#"><span class="brand-icon">✦</span> StudyFlow</a>
+    <div class="top-actions">
+      <span id="todayLabel"></span>
+      <button class="theme-btn" id="themeBtn" aria-label="Toggle theme">☾</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="welcome">
+      <div>
+        <p class="eyebrow">YOUR PERSONAL STUDY PLANNER</p>
+        <h1>Make today <span>count.</span></h1>
+        <p class="subtext">Plan your time, stay focused, and make progress every day.</p>
+      </div>
+      <div class="date-chip">📅 <span id="longDate"></span></div>
+    </section>
+
+    <section class="stats">
+      <article class="stat-card"><div class="stat-icon purple">◷</div><div><p>Planned hours</p><h2 id="plannedHours">0h 0m</h2></div></article>
+      <article class="stat-card"><div class="stat-icon green">✓</div><div><p>Completed</p><h2 id="completedCount">0 / 0</h2></div></article>
+      <article class="stat-card"><div class="stat-icon orange">◎</div><div><p>Completion rate</p><h2 id="completionRate">0%</h2></div></article>
+    </section>
+
+    <section class="content-grid">
+      <div class="panel schedule-panel">
+        <div class="panel-heading">
+          <div><p class="eyebrow">YOUR PLAN</p><h2>Daily timetable</h2></div>
+          <input type="date" id="dateFilter" aria-label="Choose date">
+        </div>
+        <div class="progress-wrap">
+          <div class="progress-label"><span>Daily progress</span><strong id="progressText">0%</strong></div>
+          <div class="progress-track"><div id="progressBar"></div></div>
+        </div>
+        <div id="scheduleList" class="schedule-list"></div>
+        <div id="emptyState" class="empty-state">
+          <div class="empty-icon">📚</div><h3>Your day is wide open</h3>
+          <p>Add your first activity to build your study timetable.</p>
+          <button class="primary-btn" id="emptyAddBtn">＋ Add activity</button>
+        </div>
+      </div>
+
+      <aside class="panel form-panel" id="formPanel">
+        <p class="eyebrow">BUILD YOUR ROUTINE</p>
+        <h2 id="formTitle">Add activity</h2>
+        <form id="activityForm">
+          <label for="title">Activity name</label>
+          <input id="title" type="text" placeholder="e.g. JavaScript practice" required maxlength="60">
+          <label for="subject">Category</label>
+          <select id="subject">
+            <option>JavaScript</option><option>HTML & CSS</option><option>React</option>
+            <option>Python</option><option>Aptitude</option><option>Interview Preparation</option>
+            <option>Project Work</option><option>Break</option><option>Other</option>
+          </select>
+          <div class="two-cols">
+            <div><label for="startTime">Start time</label><input id="startTime" type="time" value="09:00" required></div>
+            <div><label for="endTime">End time</label><input id="endTime" type="time" value="10:00" required></div>
+          </div>
+          <label for="activityDate">Date</label>
+          <input id="activityDate" type="date" required>
+          <label for="notes">Notes <span class="optional">(optional)</span></label>
+          <textarea id="notes" rows="3" placeholder="What do you want to achieve?"></textarea>
+          <p id="formError" class="form-error" role="alert"></p>
+          <button class="primary-btn full-btn" type="submit" id="saveBtn">＋ Save activity</button>
+          <button class="cancel-btn full-btn hidden" type="button" id="cancelEdit">Cancel editing</button>
+        </form>
+      </aside>
+    </section>
+    <footer>Stay consistent. Small steps lead to big results. ✨</footer>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
